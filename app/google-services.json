@@ -1,0 +1,42 @@
+    {
+  "project_info": {
+    "project_number": "308371216474",
+    "firebase_url": "https://myfamily-a083b.firebaseio.com",
+    "project_id": "myfamily-a083b",
+    "storage_bucket": "myfamily-a083b.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:308371216474:android:b44f945bd92e62f8",
+        "android_client_info": {
+          "package_name": "com.example.anurag.myfamily"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "308371216474-p18doa1c8auricerongvq9h5i2bldlom.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBAdM2Pa6uKT5Hx6PN-ZzSq0eE-1seQSXk"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
