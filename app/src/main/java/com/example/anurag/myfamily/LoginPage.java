@@ -13,18 +13,6 @@ public class LoginPage extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login_page);
         //This is Anmol Bhutada get ready for github
-        Button b = (Button)findViewById(R.id.button);
 
-
-
-        b.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                Intent intent = new Intent(getApplicationContext(), OptionsPage.class);
-                startActivity(intent);
-
-            }
-        });
     }
 }
