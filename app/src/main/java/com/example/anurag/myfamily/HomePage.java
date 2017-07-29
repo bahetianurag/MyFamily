@@ -41,7 +41,7 @@ public class HomePage extends AppCompatActivity {
     private void onSignedInInitialize(String username) {
 
         mUsername = username;
-            Welcome = Toast.makeText(this, "Hi " + mUsername.toString(), Toast.LENGTH_SHORT);
+            Welcome = Toast.makeText(this, "Hello " + mUsername.toString(), Toast.LENGTH_SHORT);
             Welcome.show();
 
 
