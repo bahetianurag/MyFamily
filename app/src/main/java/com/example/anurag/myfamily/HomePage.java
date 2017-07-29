@@ -43,12 +43,8 @@ public class HomePage extends AppCompatActivity {
         mUsername = username;
             Welcome = Toast.makeText(this, "Hello " + mUsername.toString(), Toast.LENGTH_SHORT);
             Welcome.show();
-
-
     }
     private void onSignedOutCleanup(){
-
         mUsername = null;
-
     }
 }
