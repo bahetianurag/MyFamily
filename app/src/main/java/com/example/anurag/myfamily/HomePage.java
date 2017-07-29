@@ -1,9 +1,12 @@
 package com.example.anurag.myfamily;
 
+import android.content.Intent;
 import android.net.Uri;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 import android.widget.Toast;
 
 import com.firebase.ui.auth.AuthUI;
@@ -15,6 +18,9 @@ import java.util.Arrays;
 
 public class HomePage extends AppCompatActivity {
 
+    // ANURAG EDITED
+    Button b;
+
     private FirebaseAuth mFirebaseAuth;
     private FirebaseAuth.AuthStateListener mAuthStateListener;
     public static final int RC_SIGN_IN = 1;
@@ -24,6 +30,17 @@ public class HomePage extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home_page);
+
+        b=(Button)findViewById(R.id.button2);
+        b.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent in = new Intent(getApplicationContext(),directory.class);
+                startActivity(in);
+            }
+        });
+
+
         mFirebaseAuth = FirebaseAuth.getInstance();
         FirebaseAuth auth = FirebaseAuth.getInstance();
         if (auth.getCurrentUser() == null) {
@@ -47,4 +64,5 @@ public class HomePage extends AppCompatActivity {
     private void onSignedOutCleanup(){
         mUsername = null;
     }
+
 }
