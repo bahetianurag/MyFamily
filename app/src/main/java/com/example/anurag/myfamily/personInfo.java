@@ -2,6 +2,7 @@ package com.example.anurag.myfamily;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
@@ -40,18 +41,21 @@ public class personInfo extends AppCompatActivity {
         String x = info.child("dob").getKey().toString();
         String y = info.child("gender").getKey().toString();
 
+
         Toast.makeText(getApplicationContext(),"You selected : " + name,Toast.LENGTH_SHORT).show();
         Toast.makeText(getApplicationContext(),"You selected : " + x,Toast.LENGTH_SHORT).show();
         Toast.makeText(getApplicationContext(),"You selected : " + y,Toast.LENGTH_LONG).show();
+
 
         info.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 for(DataSnapshot child : dataSnapshot.getChildren() ){
 
-                    String name = dataSnapshot.getValue().toString();
-                    person.add(name);
+                    String z = dataSnapshot.getValue().toString();
+                    person.add(z);
                     arrayAdapter.notifyDataSetChanged();
+
                 }
             }
 
