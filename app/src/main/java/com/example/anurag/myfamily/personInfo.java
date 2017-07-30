@@ -61,7 +61,7 @@ public class personInfo extends AppCompatActivity {
             }
         });
 
-       /* listView = (ListView) findViewById(R.id.listview);
+       /** listView = (ListView) findViewById(R.id.listview);
 
         final ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1,person);
 
