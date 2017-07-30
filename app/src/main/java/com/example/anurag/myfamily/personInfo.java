@@ -33,14 +33,35 @@ public class personInfo extends AppCompatActivity {
         final String name = getIntent().getStringExtra("name");
         info = ind.child(name);
 
-        String x = info.child("dob").getKey();
+        listView = (ListView) findViewById(R.id.listview);
+        final ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1,person);
+        listView.setAdapter(arrayAdapter);
 
+        String x = info.child("dob").getKey().toString();
+        String y = info.child("gender").getKey().toString();
 
         Toast.makeText(getApplicationContext(),"You selected : " + name,Toast.LENGTH_SHORT).show();
         Toast.makeText(getApplicationContext(),"You selected : " + x,Toast.LENGTH_SHORT).show();
-        Toast.makeText(getApplicationContext(),"You selected : " + info.child("gender"),Toast.LENGTH_LONG).show();
+        Toast.makeText(getApplicationContext(),"You selected : " + y,Toast.LENGTH_LONG).show();
 
-        /*listView = (ListView) findViewById(R.id.listview);
+        info.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                for(DataSnapshot child : dataSnapshot.getChildren() ){
+
+                    String name = dataSnapshot.getValue().toString();
+                    person.add(name);
+                    arrayAdapter.notifyDataSetChanged();
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+
+       /* listView = (ListView) findViewById(R.id.listview);
 
         final ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1,person);
 
@@ -83,6 +104,10 @@ public class personInfo extends AppCompatActivity {
                 person.add("Description: "+writeup);
                 person.add("Hobbies: "+hobbies);
                 arrayAdapter.notifyDataSetChanged();
+
+                Toast.makeText(getApplicationContext(),"You selected : " + name,Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(),"You selected : " + address,Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(),"You selected : " + head,Toast.LENGTH_LONG).show();
 
 
 
