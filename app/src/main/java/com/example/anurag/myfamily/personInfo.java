@@ -113,18 +113,14 @@ public class personInfo extends AppCompatActivity {
                     Toast.makeText(getApplicationContext(), "You selected : " + head, Toast.LENGTH_LONG).show();
 
                 }
-
                 @Override
                 public void onCancelled(DatabaseError databaseError) {
 
                 }
             });
-
             Toast.makeText(getApplicationContext(), "You selected : " + name, Toast.LENGTH_SHORT).show();
-
         }catch(Exception e)
         {
-
         }*/
 
     }
