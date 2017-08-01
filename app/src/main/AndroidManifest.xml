@@ -18,7 +18,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".directory" />
-        <activity android:name=".personInfo"></activity>
+        <activity android:name=".personInfo" />
     </application>
 
 </manifest>
