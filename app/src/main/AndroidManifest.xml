@@ -19,6 +19,7 @@
         </activity>
         <activity android:name=".directory" />
         <activity android:name=".personInfo" />
+        <activity android:name=".persInfo"></activity>
     </application>
 
 </manifest>
