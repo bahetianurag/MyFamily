@@ -1,6 +1,7 @@
 package com.example.anurag.myfamily;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.net.Uri;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
@@ -25,25 +26,31 @@ public class HomePage extends AppCompatActivity {
     private FirebaseAuth.AuthStateListener mAuthStateListener;
     public static final int RC_SIGN_IN = 1;
     private String mUsername;
+    private String phonenumber;
     Toast Welcome;
+    public SharedPreferences pref=null;
+    public SharedPreferences.Editor editor;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home_page);
-
-        b=(Button)findViewById(R.id.button2);
+        pref=getApplicationContext().getSharedPreferences("MyPref",MODE_PRIVATE);
+        editor=pref.edit();
+        b = (Button) findViewById(R.id.button2);
         b.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent in = new Intent(getApplicationContext(),directory.class);
+                Intent in = new Intent(getApplicationContext(), directory.class);
                 startActivity(in);
             }
         });
+        mFirebaseAuth= FirebaseAuth.getInstance();
+        FirebaseUser user = mFirebaseAuth.getCurrentUser();
+        if (user != null) {
 
-
-        mFirebaseAuth = FirebaseAuth.getInstance();
-        FirebaseAuth auth = FirebaseAuth.getInstance();
-        if (auth.getCurrentUser() == null) {
+            onSignedInInitialize(user.getPhoneNumber());
+        } else {
             onSignedOutCleanup();
             startActivityForResult(
                     AuthUI.getInstance()
@@ -53,16 +60,21 @@ public class HomePage extends AppCompatActivity {
                                     Arrays.asList(new AuthUI.IdpConfig.Builder(AuthUI.PHONE_VERIFICATION_PROVIDER).build()))
                             .build(),
                     RC_SIGN_IN);
-        }
-    }
-    private void onSignedInInitialize(String username) {
 
-        mUsername = username;
-            Welcome = Toast.makeText(this, "Hello " + mUsername.toString(), Toast.LENGTH_SHORT);
-            Welcome.show();
+
+        }
+
+
+    }
+    private void onSignedInInitialize(String phonenum) {
+        phonenumber = phonenum;
+        editor.putString("Phone Number",phonenumber);
+        editor.commit();
     }
     private void onSignedOutCleanup(){
-        mUsername = null;
-    }
 
+        mUsername = null;
+        phonenumber=null;
+
+    }
 }
