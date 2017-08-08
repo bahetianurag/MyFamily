@@ -16,7 +16,7 @@
         <activity android:name=".directory" />
         <activity android:name=".personInfo" />
         <activity android:name=".persInfo" />
-        <activity android:name=".test">
+        <activity android:name=".test1">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

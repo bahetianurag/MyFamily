@@ -7,7 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 
-public class test extends AppCompatActivity {
+public class test1 extends AppCompatActivity {
 
     EditText firstname;
     EditText middlename;
@@ -18,7 +18,7 @@ public class test extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_test);
+        setContentView(R.layout.activity_test1);
         pref=getApplicationContext().getSharedPreferences("MyPref",MODE_PRIVATE);
         editor=pref.edit();
         firstname = (EditText) findViewById(R.id.fn);
