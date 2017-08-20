@@ -13,6 +13,7 @@ public class LoginPage extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login_page);
         //This is Anmol Bhutada get ready for github
-
+        //This is ANURAG BAHETI get ready for github
+        //This is ANURAG BAHETI get ready for github
     }
 }
