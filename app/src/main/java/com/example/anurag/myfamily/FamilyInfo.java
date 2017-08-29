@@ -14,6 +14,10 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
+
+// NOT WORKING
+
+
 public class FamilyInfo extends AppCompatActivity {
 
     FirebaseDatabase database = FirebaseDatabase.getInstance();
@@ -32,10 +36,13 @@ public class FamilyInfo extends AppCompatActivity {
         setContentView(R.layout.activity_family_info);
 
         final String name = getIntent().getStringExtra("name");
+
+        Toast.makeText(getApplicationContext(),name,Toast.LENGTH_SHORT).show();
+
         info = ind.child("Gopal Dhoot");
 
 
-        Toast.makeText(getApplicationContext(),info.getKey(),Toast.LENGTH_SHORT).show();
+
         listView = (ListView) findViewById(R.id.listview);
         final ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1,person);
         listView.setAdapter(arrayAdapter);

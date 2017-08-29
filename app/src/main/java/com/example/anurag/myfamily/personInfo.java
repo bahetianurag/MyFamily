@@ -80,22 +80,21 @@ public class personInfo extends AppCompatActivity {
                 if (position == 4 || position == 14) {
 
                     String item = (String) listView.getItemAtPosition(position);
-                    if(!(item.equals("Married to: NA"))) {
-                        if (position == 4) {
-                            Intent i = new Intent(getApplication(), personInfo.class);
-                            item = item.substring(item.indexOf(":") + 2);
-                            Toast.makeText(getApplicationContext(),item,Toast.LENGTH_SHORT).show();
-                            i.putExtra("name", item);
-                            startActivity(i);
-                        } else {
-                            Intent i = new Intent(getApplication(), FamilyInfo.class);
-                            item = a[6];
-                            Toast.makeText(getApplicationContext(),item,Toast.LENGTH_SHORT).show();
-                            i.putExtra("name", item);
-                            startActivity(i);
-                        }
+                    if (position == 4 && !(item.equals("Married to: NA"))) {
+                        Intent i = new Intent(getApplication(), personInfo.class);
+                        item = item.substring(item.indexOf(":") + 2);
+                        //Toast.makeText(getApplicationContext(), item, Toast.LENGTH_SHORT).show();
+                        i.putExtra("name", item);
+                        startActivity(i);
+                    } else if (position == 14) {
+                        Intent i = new Intent(getApplication(), FamilyInfo.class);
+                        item = a[6];
+                        Toast.makeText(getApplicationContext(), item, Toast.LENGTH_SHORT).show();
+                        i.putExtra("name", item);
+                        startActivity(i);
                     }
                     //Toast.makeText(getApplicationContext(),"You selected : " + item,Toast.LENGTH_SHORT).show();
+
 
                 }
             }
