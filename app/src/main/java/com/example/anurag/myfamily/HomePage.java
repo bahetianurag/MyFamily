@@ -21,7 +21,7 @@ public class HomePage extends AppCompatActivity {
 
     // ANURAG EDITED
     Button b;
-
+    int backButtonCount=0;
     private FirebaseAuth mFirebaseAuth;
     private FirebaseAuth.AuthStateListener mAuthStateListener;
     public static final int RC_SIGN_IN = 1;
@@ -38,13 +38,7 @@ public class HomePage extends AppCompatActivity {
         pref=getApplicationContext().getSharedPreferences("MyPref",MODE_PRIVATE);
         editor=pref.edit();
         b = (Button) findViewById(R.id.button2);
-        b.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent in = new Intent(getApplicationContext(), directory.class);
-                startActivity(in);
-            }
-        });
+
         mFirebaseAuth= FirebaseAuth.getInstance();
         FirebaseUser user = mFirebaseAuth.getCurrentUser();
         if (user != null) {
@@ -65,7 +59,17 @@ public class HomePage extends AppCompatActivity {
         }
 
 
+
     }
+
+    public void callFunc(View view) {
+        // Do something in response to button
+        Toast.makeText(getApplicationContext(),"Button pressed",Toast.LENGTH_SHORT).show();
+        Intent in = new Intent(getApplicationContext(), directory.class);
+        startActivity(in);
+    }
+
+
     private void onSignedInInitialize(String phonenum) {
         phonenumber = phonenum;
         editor.putString("Phone Number",phonenumber);
@@ -75,6 +79,24 @@ public class HomePage extends AppCompatActivity {
 
         mUsername = null;
         phonenumber=null;
+    }
 
+
+    @Override
+    public void onBackPressed() {
+        //super.onBackPressed();
+
+        if(backButtonCount >= 1)
+        {
+            Intent intent = new Intent(Intent.ACTION_MAIN);
+            intent.addCategory(Intent.CATEGORY_HOME);
+            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            startActivity(intent);
+        }
+        else
+        {
+            Toast.makeText(this, "Press the back button once again to close the application.", Toast.LENGTH_SHORT).show();
+            backButtonCount++;
+        }
     }
 }

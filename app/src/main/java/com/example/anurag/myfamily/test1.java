@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.Toast;
 
 public class test1 extends AppCompatActivity {
 
@@ -21,6 +22,16 @@ public class test1 extends AppCompatActivity {
         setContentView(R.layout.activity_test1);
         pref=getApplicationContext().getSharedPreferences("MyPref",MODE_PRIVATE);
         editor=pref.edit();
+
+        String fn = pref.getString("First Name","");
+        String mn = pref.getString("Middle Name","");
+        String ln = pref.getString("Last Name","");
+
+        if(!(fn.equals("") && mn.equals("") && ln.equals("")))
+        {
+            Intent submitIntent = new Intent(this, HomePage.class);
+            startActivity(submitIntent);
+        }
         firstname = (EditText) findViewById(R.id.fn);
         middlename = (EditText) findViewById(R.id.mn);
         lastname = (EditText) findViewById(R.id.ln);
