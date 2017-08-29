@@ -44,7 +44,7 @@ public class FamilyInfo extends AppCompatActivity {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 for(DataSnapshot child : dataSnapshot.getChildren() ){
-                    Toast.makeText(getApplicationContext(),x,Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(),x++,Toast.LENGTH_SHORT).show();
                     //a[x]= child.getKey()+": "+child.getValue().toString();
                     //person.add(a[x++]);
                     //arrayAdapter.notifyDataSetChanged();

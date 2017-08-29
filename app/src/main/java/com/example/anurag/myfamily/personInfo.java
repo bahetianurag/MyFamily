@@ -80,7 +80,7 @@ public class personInfo extends AppCompatActivity {
                 if (position == 4 || position == 14) {
 
                     String item = (String) listView.getItemAtPosition(position);
-                    if(!(item.equals("NA"))) {
+                    if(!(item.equals("Married to: NA"))) {
                         if (position == 4) {
                             Intent i = new Intent(getApplication(), personInfo.class);
                             item = item.substring(item.indexOf(":") + 2);
