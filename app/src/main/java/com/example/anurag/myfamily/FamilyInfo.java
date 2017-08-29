@@ -32,7 +32,7 @@ public class FamilyInfo extends AppCompatActivity {
         setContentView(R.layout.activity_family_info);
 
         final String name = getIntent().getStringExtra("name");
-        info = ind.child("Amarchand Baheti");
+        info = ind.child("Gopal Dhoot");
 
 
         Toast.makeText(getApplicationContext(),info.getKey(),Toast.LENGTH_SHORT).show();
