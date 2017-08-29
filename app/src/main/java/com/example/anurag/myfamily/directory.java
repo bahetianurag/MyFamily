@@ -42,12 +42,10 @@ public class directory extends AppCompatActivity {
             public void onDataChange(DataSnapshot dataSnapshot) {
                 for(DataSnapshot child : dataSnapshot.getChildren() ){
                     String name = child.getKey();
-
                     person.add(name);
                     arrayAdapter.notifyDataSetChanged();
                 }
             }
-
             @Override
             public void onCancelled(DatabaseError databaseError) {
 

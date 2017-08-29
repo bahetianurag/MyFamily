@@ -26,6 +26,8 @@ public class personInfo extends AppCompatActivity {
     private ArrayList<String> person = new ArrayList<>();
     private ListView listView;
 
+    int x=0;String a[]=new String[15];
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -52,12 +54,24 @@ public class personInfo extends AppCompatActivity {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 for(DataSnapshot child : dataSnapshot.getChildren() ){
-
-                    String a = child.getValue().toString();
-                    //String z = dataSnapshot.getValue().toString();
-                    person.add(a);
-                    arrayAdapter.notifyDataSetChanged();
+                    a[x++]=child.getValue().toString();
                 }
+
+                person.add("Name: "+name);arrayAdapter.notifyDataSetChanged();
+                person.add("Gender: "+a[5]);arrayAdapter.notifyDataSetChanged();
+                person.add("Date of birth: "+a[2]);arrayAdapter.notifyDataSetChanged();
+                person.add("Education: "+a[3]);arrayAdapter.notifyDataSetChanged();
+                person.add("Married to : "+a[10]);arrayAdapter.notifyDataSetChanged();
+                person.add("Marriage Anniversary: "+a[9]);arrayAdapter.notifyDataSetChanged();
+                person.add("Address: "+a[0]);arrayAdapter.notifyDataSetChanged();
+                person.add("Landline: "+a[8]);arrayAdapter.notifyDataSetChanged();
+                person.add("Mobile: "+a[11]);arrayAdapter.notifyDataSetChanged();
+                person.add("Email: "+a[4]);arrayAdapter.notifyDataSetChanged();
+                person.add("Blood Group: "+a[1]);arrayAdapter.notifyDataSetChanged();
+                person.add("Occupation: "+a[12]);arrayAdapter.notifyDataSetChanged();
+                person.add("About Occupation: "+a[13]);arrayAdapter.notifyDataSetChanged();
+                person.add("Hobbies: "+a[7]);arrayAdapter.notifyDataSetChanged();
+                person.add("Head Of Family: "+a[6]);arrayAdapter.notifyDataSetChanged();
             }
             @Override
             public void onCancelled(DatabaseError databaseError) {
