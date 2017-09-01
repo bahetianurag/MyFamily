@@ -58,6 +58,7 @@ public class FamilyInfo extends AppCompatActivity {
                     Toast.makeText(getApplicationContext(),a1[x-1][0]+a1[x-1][1],Toast.LENGTH_SHORT).show();
                     //person.add(a[x++]);
                     //arrayAdapter.notifyDataSetChanged();
+                    //
 
                 }
 
