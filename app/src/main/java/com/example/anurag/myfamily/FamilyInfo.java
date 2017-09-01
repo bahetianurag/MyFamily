@@ -6,6 +6,7 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -13,10 +14,6 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
-
-
-// NOT WORKING
-
 
 public class FamilyInfo extends AppCompatActivity {
 
@@ -28,7 +25,9 @@ public class FamilyInfo extends AppCompatActivity {
     private ArrayList<String> person = new ArrayList<>();
     private ListView listView;
 
-    int x=0;String a[]=new String[15];
+    int x=0;//String a[]=new String[15];
+
+    String a1[][]=new String[15][2];
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,28 +36,43 @@ public class FamilyInfo extends AppCompatActivity {
 
         final String name = getIntent().getStringExtra("name");
 
-        Toast.makeText(getApplicationContext(),name,Toast.LENGTH_SHORT).show();
+        //Toast.makeText(getApplicationContext(),name,Toast.LENGTH_SHORT).show();
 
-        info = ind.child("Gopal Dhoot");
+        info = ind.child(name);
 
-
+        Toast.makeText(getApplicationContext(),info.getKey(),Toast.LENGTH_SHORT).show();
 
         listView = (ListView) findViewById(R.id.listview);
         final ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1,person);
         listView.setAdapter(arrayAdapter);
 
-        info.addValueEventListener(new ValueEventListener() {        // NOT GOING INSIDE THIS THING
+        //Toast.makeText(getApplicationContext(),info.toString(),Toast.LENGTH_SHORT).show();
+
+        info.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                for(DataSnapshot child : dataSnapshot.getChildren() ){
-                    Toast.makeText(getApplicationContext(),x++,Toast.LENGTH_SHORT).show();
-                    //a[x]= child.getKey()+": "+child.getValue().toString();
+                for(DataSnapshot child : dataSnapshot.getChildren()){
+                    //a[x]=child.getValue().toString()+": "+child.getKey();
+                    a1[x][0]=child.getValue().toString();
+                    a1[x++][1]=child.getKey();
+                    Toast.makeText(getApplicationContext(),a1[x-1][0]+a1[x-1][1],Toast.LENGTH_SHORT).show();
                     //person.add(a[x++]);
                     //arrayAdapter.notifyDataSetChanged();
+
                 }
+
+                for(int i=0;i<x;i++){
+
+                }
+
+
+
+
             }
+
             @Override
             public void onCancelled(DatabaseError databaseError) {
+
             }
         });
 

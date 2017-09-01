@@ -10,7 +10,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".LoginPage" />
-        <activity android:name=".HomePage"></activity>
+        <activity android:name=".HomePage" />
         <activity android:name=".directory" />
         <activity android:name=".personInfo" />
         <activity android:name=".persInfo" />
@@ -21,7 +21,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".FamilyInfo"></activity>
+        <activity android:name=".FamilyInfo" />
+        <activity android:name=".famInfo"></activity>
     </application>
 
 </manifest>

@@ -89,7 +89,7 @@ public class personInfo extends AppCompatActivity {
                     } else if (position == 14) {
                         Intent i = new Intent(getApplication(), FamilyInfo.class);
                         item = a[6];
-                        Toast.makeText(getApplicationContext(), item, Toast.LENGTH_SHORT).show();
+                        //Toast.makeText(getApplicationContext(), item, Toast.LENGTH_SHORT).show();
                         i.putExtra("name", item);
                         startActivity(i);
                     }
