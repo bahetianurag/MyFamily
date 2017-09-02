@@ -46,7 +46,7 @@ public class FamilyInfo extends AppCompatActivity {
         final ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1,person);
         listView.setAdapter(arrayAdapter);
 
-        //Toast.makeText(getApplicationContext(),info.toString(),Toast.LENGTH_SHORT).show();
+        Toast.makeText(getApplicationContext(),info.toString(),Toast.LENGTH_SHORT).show();
 
         info.addValueEventListener(new ValueEventListener() {
             @Override
