@@ -82,35 +82,5 @@ public class FamilyInfo extends AppCompatActivity {
 
             }
         });
-
-        /*
-        info.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                for(DataSnapshot child : dataSnapshot.getChildren()){
-                    //a[x]=child.getValue().toString()+": "+child.getKey();
-                    a1[x][0]=child.getValue().toString();
-                    a1[x++][1]=child.getKey();
-                    Toast.makeText(getApplicationContext(),a1[x-1][0]+a1[x-1][1],Toast.LENGTH_SHORT).show();
-                    //person.add(a[x++]);
-                    //arrayAdapter.notifyDataSetChanged();
-
-                }
-
-                for(int i=0;i<x;i++){
-
-                }
-
-
-
-
-            }
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-
-            }
-        });*/
-
     }
 }
