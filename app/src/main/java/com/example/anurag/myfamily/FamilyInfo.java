@@ -30,13 +30,16 @@ public class FamilyInfo extends AppCompatActivity {
 
     int x=0;String a[]={"Wife","Son","Daughter in law","Daughter","Grandson","Granddaughter"};
 
-    String a1[][]=new String[15][2];
+    String a1[][]=new String[25][2];
     String name,address,landline;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_family_info);
+
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
 
         name = getIntent().getStringExtra("name");
         address = getIntent().getStringExtra("address");
@@ -101,8 +104,12 @@ public class FamilyInfo extends AppCompatActivity {
 
             }
         });
-
-
-
     }
+
+    @Override
+    public boolean onSupportNavigateUp() {
+        onBackPressed();
+        return true;
+    }
+
 }

@@ -36,9 +36,11 @@ public class personInfo extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_person_info);
 
-        //try {
-            final String name = getIntent().getStringExtra("name");
-            info = ind.child(name);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
+
+        final String name = getIntent().getStringExtra("name");
+        info = ind.child(name);
 
         listView = (ListView) findViewById(R.id.listview);
         final ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1,person);
@@ -95,11 +97,13 @@ public class personInfo extends AppCompatActivity {
                         i.putExtra("landline",a[8]);
                         startActivity(i);
                     }
-                    //Toast.makeText(getApplicationContext(),"You selected : " + item,Toast.LENGTH_SHORT).show();
-
-
                 }
             }
         });
+    }
+    @Override
+    public boolean onSupportNavigateUp() {
+        onBackPressed();
+        return true;
     }
 }
