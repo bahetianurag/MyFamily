@@ -1,7 +1,10 @@
 package com.example.anurag.myfamily;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
@@ -28,7 +31,7 @@ public class FamilyInfo extends AppCompatActivity {
     int x=0;String a[]={"Wife","Son","Daughter in law","Daughter","Grandson","Granddaughter"};
 
     String a1[][]=new String[15][2];
-    String name;
+    String name,address,landline;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,7 +39,8 @@ public class FamilyInfo extends AppCompatActivity {
         setContentView(R.layout.activity_family_info);
 
         name = getIntent().getStringExtra("name");
-
+        address = getIntent().getStringExtra("address");
+        landline = getIntent().getStringExtra("landline");
         //Toast.makeText(getApplicationContext(),name,Toast.LENGTH_SHORT).show();
 
         info = ind.child(name);
@@ -60,7 +64,8 @@ public class FamilyInfo extends AppCompatActivity {
                     //arrayAdapter.notifyDataSetChanged();
                 }
 
-
+                person.add("Address: "+address);arrayAdapter.notifyDataSetChanged();
+                person.add("Landline: "+landline);arrayAdapter.notifyDataSetChanged();
                 person.add("Self: "+name);arrayAdapter.notifyDataSetChanged();
                 for(int i=0;i<a.length;i++){
                     for(int j=0;j<x;j++){
@@ -82,5 +87,22 @@ public class FamilyInfo extends AppCompatActivity {
 
             }
         });
+
+
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+                String item = (String) listView.getItemAtPosition(position);
+                item = item.substring(item.indexOf(":")+2);
+                Intent i = new Intent(getApplicationContext(),personInfo.class);
+                i.putExtra("name",item);
+                startActivity(i);
+
+            }
+        });
+
+
+
     }
 }

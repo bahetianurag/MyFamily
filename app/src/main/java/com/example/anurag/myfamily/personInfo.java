@@ -91,6 +91,8 @@ public class personInfo extends AppCompatActivity {
                         item = a[6];
                         //Toast.makeText(getApplicationContext(), item, Toast.LENGTH_SHORT).show();
                         i.putExtra("name", item);
+                        i.putExtra("address",a[0]);
+                        i.putExtra("landline",a[8]);
                         startActivity(i);
                     }
                     //Toast.makeText(getApplicationContext(),"You selected : " + item,Toast.LENGTH_SHORT).show();
