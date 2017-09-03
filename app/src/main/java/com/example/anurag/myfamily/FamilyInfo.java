@@ -25,16 +25,17 @@ public class FamilyInfo extends AppCompatActivity {
     private ArrayList<String> person = new ArrayList<>();
     private ListView listView;
 
-    int x=0;//String a[]=new String[15];
+    int x=0;String a[]={"Wife","Son","Daughter in law","Daughter","Grandson","Granddaughter"};
 
     String a1[][]=new String[15][2];
+    String name;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_family_info);
 
-        final String name = getIntent().getStringExtra("name");
+        name = getIntent().getStringExtra("name");
 
         //Toast.makeText(getApplicationContext(),name,Toast.LENGTH_SHORT).show();
 
@@ -46,8 +47,43 @@ public class FamilyInfo extends AppCompatActivity {
         final ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1,person);
         listView.setAdapter(arrayAdapter);
 
-        Toast.makeText(getApplicationContext(),info.toString(),Toast.LENGTH_SHORT).show();
+        //Toast.makeText(getApplicationContext(),info.toString(),Toast.LENGTH_SHORT).show();
 
+        info.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                for(DataSnapshot child : dataSnapshot.getChildren()){
+                    a1[x][0]=child.getValue().toString();
+                    a1[x++][1]=child.getKey();
+                    //Toast.makeText(getApplicationContext(),x,Toast.LENGTH_SHORT).show();
+                    //person.add(x);
+                    //arrayAdapter.notifyDataSetChanged();
+                }
+
+
+                person.add("Self: "+name);arrayAdapter.notifyDataSetChanged();
+                for(int i=0;i<a.length;i++){
+                    for(int j=0;j<x;j++){
+                        //if(j==0)
+                        //{person.add("Self: "+name);arrayAdapter.notifyDataSetChanged();}
+                        if(a[i].equals(a1[j][0]))
+                        {
+                            person.add(a1[j][0]+": "+a1[j][1]);
+                            arrayAdapter.notifyDataSetChanged();
+                        }
+                    }
+
+
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+
+        /*
         info.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
@@ -58,7 +94,6 @@ public class FamilyInfo extends AppCompatActivity {
                     Toast.makeText(getApplicationContext(),a1[x-1][0]+a1[x-1][1],Toast.LENGTH_SHORT).show();
                     //person.add(a[x++]);
                     //arrayAdapter.notifyDataSetChanged();
-                    //
 
                 }
 
@@ -75,7 +110,7 @@ public class FamilyInfo extends AppCompatActivity {
             public void onCancelled(DatabaseError databaseError) {
 
             }
-        });
+        });*/
 
     }
 }
