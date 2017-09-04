@@ -34,6 +34,7 @@ public class FamilyInfo extends AppCompatActivity {
 
     String a1[][]=new String[25][2];
     String name,address,landline;
+    //String l1="",l2="",l3="";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,8 +53,39 @@ public class FamilyInfo extends AppCompatActivity {
         title= (TextView)findViewById(R.id.title);
         title.setText(name+" and Family");
         addr= (TextView)findViewById(R.id.addr);
-        addr.setText((address+System.getProperty("line.separator"))+"Contact: "+landline);
 
+        String l1,l2,l3,l4="";
+        int lasts=0;
+        int firstc=0;
+        int secondc=0;
+        int i;
+        int k=0;
+
+        lasts=address.lastIndexOf(',')+2;
+        l4=address.substring(lasts,address.length());
+        address=address.substring(0,lasts-1);
+
+        for(i=0;i<address.length();i++)
+        {
+            char ch=address.charAt(i);
+            if(ch==',')
+            {
+                k++;
+                if(k==2)
+                    firstc=i;
+                if(k==4)
+                    secondc=i;
+            }
+        }
+
+        firstc+=1;
+        l1=address.substring(0,firstc);
+        secondc+=1;
+        l2=address.substring(firstc+1,secondc);
+        l3=address.substring(secondc+1);
+
+        addr.setText(l1+System.getProperty("line.separator")+l2+System.getProperty("line.separator")
+                +l3+System.getProperty("line.separator")+l4+System.getProperty("line.separator")+"Contact: "+landline);
 
         listView = (ListView) findViewById(R.id.listview);
         final ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1,person);
