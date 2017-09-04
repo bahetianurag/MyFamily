@@ -46,11 +46,8 @@ public class FamilyInfo extends AppCompatActivity {
         name = getIntent().getStringExtra("name");
         address = getIntent().getStringExtra("address");
         landline = getIntent().getStringExtra("landline");
-        //Toast.makeText(getApplicationContext(),name,Toast.LENGTH_SHORT).show();
 
         info = ind.child(name);
-
-        //Toast.makeText(getApplicationContext(),info.getKey(),Toast.LENGTH_SHORT).show();
 
         title= (TextView)findViewById(R.id.title);
         title.setText(name+" and Family");
@@ -62,43 +59,30 @@ public class FamilyInfo extends AppCompatActivity {
         final ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1,person);
         listView.setAdapter(arrayAdapter);
 
-        //Toast.makeText(getApplicationContext(),info.toString(),Toast.LENGTH_SHORT).show();
-
         info.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 for(DataSnapshot child : dataSnapshot.getChildren()){
                     a1[x][0]=child.getValue().toString();
                     a1[x++][1]=child.getKey();
-                    //Toast.makeText(getApplicationContext(),x,Toast.LENGTH_SHORT).show();
-                    //person.add(x);
-                    //arrayAdapter.notifyDataSetChanged();
                 }
 
-                //person.add("Address: "+address);arrayAdapter.notifyDataSetChanged();
-                //person.add("Landline: "+landline);arrayAdapter.notifyDataSetChanged();
                 person.add("Self: "+name);arrayAdapter.notifyDataSetChanged();
                 for(int i=0;i<a.length;i++){
                     for(int j=0;j<x;j++){
-                        //if(j==0)
-                        //{person.add("Self: "+name);arrayAdapter.notifyDataSetChanged();}
                         if(a[i].equals(a1[j][0]))
                         {
                             person.add(a1[j][0]+": "+a1[j][1]);
                             arrayAdapter.notifyDataSetChanged();
                         }
                     }
-
-
                 }
             }
-
             @Override
             public void onCancelled(DatabaseError databaseError) {
 
             }
         });
-
 
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -109,7 +93,6 @@ public class FamilyInfo extends AppCompatActivity {
                 Intent i = new Intent(getApplicationContext(),personInfo.class);
                 i.putExtra("name",item);
                 startActivity(i);
-
             }
         });
     }
