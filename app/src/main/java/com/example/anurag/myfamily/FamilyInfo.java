@@ -28,7 +28,7 @@ public class FamilyInfo extends AppCompatActivity {
 
     private ArrayList<String> person = new ArrayList<>();
     private ListView listView;
-    TextView title;
+    TextView title,addr;
 
     int x=0;String a[]={"Wife","Son","Daughter in law","Daughter","Grandson","Granddaughter"};
 
@@ -50,10 +50,12 @@ public class FamilyInfo extends AppCompatActivity {
 
         info = ind.child(name);
 
-        Toast.makeText(getApplicationContext(),info.getKey(),Toast.LENGTH_SHORT).show();
+        //Toast.makeText(getApplicationContext(),info.getKey(),Toast.LENGTH_SHORT).show();
 
         title= (TextView)findViewById(R.id.title);
         title.setText(name+" and Family");
+        addr= (TextView)findViewById(R.id.addr);
+        addr.setText((address+System.getProperty("line.separator"))+"Contact: "+landline);
 
 
         listView = (ListView) findViewById(R.id.listview);
@@ -73,8 +75,8 @@ public class FamilyInfo extends AppCompatActivity {
                     //arrayAdapter.notifyDataSetChanged();
                 }
 
-                person.add("Address: "+address);arrayAdapter.notifyDataSetChanged();
-                person.add("Landline: "+landline);arrayAdapter.notifyDataSetChanged();
+                //person.add("Address: "+address);arrayAdapter.notifyDataSetChanged();
+                //person.add("Landline: "+landline);arrayAdapter.notifyDataSetChanged();
                 person.add("Self: "+name);arrayAdapter.notifyDataSetChanged();
                 for(int i=0;i<a.length;i++){
                     for(int j=0;j<x;j++){
