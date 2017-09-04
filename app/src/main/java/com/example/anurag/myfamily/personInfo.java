@@ -1,6 +1,7 @@
 package com.example.anurag.myfamily;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -78,7 +79,7 @@ public class personInfo extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
-                if (position == 4 || position == 14) {
+                if (position == 4 || position == 14 || position == 7 || position==8) {
 
                     String item = (String) listView.getItemAtPosition(position);
                     if (position == 4 && !(item.equals("Married to: NA"))) {
@@ -95,6 +96,15 @@ public class personInfo extends AppCompatActivity {
                         i.putExtra("address",a[0]);
                         i.putExtra("landline",a[8]);
                         startActivity(i);
+                    }
+                    else if(position==7 || position ==8){
+                        if(item.length()<15)
+                        {}
+                        else {
+                            Intent intent = new Intent(Intent.ACTION_DIAL);
+                            intent.setData(Uri.parse("tel:" + item.substring(item.indexOf(":") + 1)));
+                            startActivity(intent);
+                        }
                     }
                 }
             }
