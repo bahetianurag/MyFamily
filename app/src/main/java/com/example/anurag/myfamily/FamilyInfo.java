@@ -32,7 +32,7 @@ public class FamilyInfo extends AppCompatActivity {
 
     String a1[][]=new String[25][2];
     String name,address,landline;
-    //String l1="",l2="",l3="";
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
