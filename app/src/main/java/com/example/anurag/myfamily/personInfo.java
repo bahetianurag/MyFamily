@@ -66,7 +66,19 @@ public class personInfo extends AppCompatActivity {
                 person.add("Email: "+a[4]);arrayAdapter.notifyDataSetChanged();
                 person.add("Blood Group: "+a[1]);arrayAdapter.notifyDataSetChanged();
                 person.add("Occupation: "+a[12]);arrayAdapter.notifyDataSetChanged();
-                person.add("About Occupation: "+a[13]);arrayAdapter.notifyDataSetChanged();
+
+                String z="\n",s=a[13];
+                for(int i=0;i<s.length();i++){
+                    if(s.charAt(i)=='*')
+                    {
+                        i=i+1;
+                        z=z+"\n";
+                        continue;
+                    }
+                    z=z+s.charAt(i);
+                }
+                person.add("About Occupation: "+z);arrayAdapter.notifyDataSetChanged();
+
                 person.add("Hobbies: "+a[7]);arrayAdapter.notifyDataSetChanged();
                 person.add("Family Name: "+a[6]+" and Family");arrayAdapter.notifyDataSetChanged();
             }
