@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.anurag.myfamily">
 
+    <uses-permission android:name="android.permission.CALL_PHONE" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -22,7 +24,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".FamilyInfo" />
-        <activity android:name=".famInfo"></activity>
+        <activity android:name=".famInfo" />
+        <activity android:name=".profile"></activity>
     </application>
-    <uses-permission android:name="android.permission.CALL_PHONE" />
+
 </manifest>

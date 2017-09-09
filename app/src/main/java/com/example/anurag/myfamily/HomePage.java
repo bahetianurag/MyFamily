@@ -20,7 +20,7 @@ import java.util.Arrays;
 public class HomePage extends AppCompatActivity {
 
     // ANURAG EDITED
-    Button b;
+    //Button b1;
     int backButtonCount=0;
     private FirebaseAuth mFirebaseAuth;
     private FirebaseAuth.AuthStateListener mAuthStateListener;
@@ -37,7 +37,7 @@ public class HomePage extends AppCompatActivity {
         setContentView(R.layout.activity_home_page);
         pref=getApplicationContext().getSharedPreferences("MyPref",MODE_PRIVATE);
         editor=pref.edit();
-        b = (Button) findViewById(R.id.button2);
+        //b1 = (Button) findViewById(R.id.button2);
 
         mFirebaseAuth= FirebaseAuth.getInstance();
         FirebaseUser user = mFirebaseAuth.getCurrentUser();
@@ -62,10 +62,17 @@ public class HomePage extends AppCompatActivity {
 
     }
 
-    public void callFunc(View view) {
+    public void callDir(View view) {
         // Do something in response to button
         Toast.makeText(getApplicationContext(),"Button pressed",Toast.LENGTH_SHORT).show();
         Intent in = new Intent(getApplicationContext(), directory.class);
+        startActivity(in);
+    }
+
+    public void callProfile(View view) {
+        // Do something in response to button
+        Toast.makeText(getApplicationContext(),"Button pressed",Toast.LENGTH_SHORT).show();
+        Intent in = new Intent(getApplicationContext(), profile.class);
         startActivity(in);
     }
 
